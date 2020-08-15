@@ -9,7 +9,8 @@ final List<SNPInsistModel> mockInsistLists = [
 ];
 
 final List<SNPBannerModel> mockBannerList = [
-  SNPBannerModel(id: "0", url: ""),
-  SNPBannerModel(id: "1"),
-  SNPBannerModel(id: "2"),
+  SNPBannerModel(id: "0", url: "lib/mock_assets/banner0.jpeg"),
+  SNPBannerModel(id: "1", url: "lib/mock_assets/banner1.jpeg"),
+  SNPBannerModel(id: "2", url: "lib/mock_assets/banner2.jpeg"),
+  SNPBannerModel(id: "3", url: "lib/mock_assets/banner3.jpeg"),
 ];
