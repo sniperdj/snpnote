@@ -84,8 +84,9 @@ class SNPHomeScreen extends StatelessWidget {
                     return ListTile(
                       title: Text('${insistItem.insistName}'),
                       onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(SNPInsistDetail.routeName);
+                        Navigator.of(context).pushNamed(
+                            SNPInsistDetail.routeName,
+                            arguments: insistItem);
                       },
                     );
                   }),
