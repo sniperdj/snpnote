@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:snpnote/core/model/home/snp_insist_model.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:snpnote/ui/pages/home/snp_home_insist_detail.dart';
 
-class SNPInsistDetail extends StatefulWidget {
+class SNPInsistDetailScreen extends StatefulWidget {
   static const String routeName = "/insistdetail";
 
   @override
-  _SNPInsistDetailState createState() => _SNPInsistDetailState();
+  _SNPInsistDetailScreenState createState() => _SNPInsistDetailScreenState();
 }
 
-class _SNPInsistDetailState extends State<SNPInsistDetail> {
+class _SNPInsistDetailScreenState extends State<SNPInsistDetailScreen> {
   final _calendarC = CalendarController();
 
   @override

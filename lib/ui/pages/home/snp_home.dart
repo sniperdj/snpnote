@@ -85,7 +85,7 @@ class SNPHomeScreen extends StatelessWidget {
                       title: Text('${insistItem.insistName}'),
                       onTap: () {
                         Navigator.of(context).pushNamed(
-                            SNPInsistDetail.routeName,
+                            SNPInsistDetailScreen.routeName,
                             arguments: insistItem);
                       },
                     );

@@ -48,6 +48,10 @@ flutter:
     - lib/mock_assets/banner1.jpeg
     - lib/mock_assets/banner2.jpeg
     - lib/mock_assets/banner3.jpeg
+    - lib/mock_assets/diary0.webp
+    - lib/mock_assets/diary1.webp
+    - lib/mock_assets/diary2.jpeg
+    - lib/mock_assets/diary3.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
