@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:snpnote/ui/pages/home/snp_home.dart';
 import 'package:snpnote/ui/pages/diary/snp_diary.dart';
 import 'package:snpnote/ui/pages/gallery/snp_gallery.dart';
+import 'package:snpnote/ui/pages/my/snp_my.dart';
 
 final List<Widget> pages = [
   SNPHomeScreen(),
   SNPDiaryScreen(),
   SNPGalleryScreen(),
-  SNPHomeScreen()
+  SNPMyScreen()
 ];
 
 final List<BottomNavigationBarItem> naviBarItems = [

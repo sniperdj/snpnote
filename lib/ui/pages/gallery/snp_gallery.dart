@@ -12,12 +12,15 @@ class SNPGalleryScreen extends StatelessWidget {
   }
 
   Widget gridSection() {
-    return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, mainAxisSpacing: 8, crossAxisSpacing: 8),
-        itemBuilder: (context, index) {
-          return getCellItem();
-        });
+    return Container(
+      color: Color.fromARGB(240, 240, 240, 240),
+      child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, mainAxisSpacing: 8, crossAxisSpacing: 8),
+          itemBuilder: (context, index) {
+            return getCellItem();
+          }),
+    );
   }
 
   Widget getCellItem() {
@@ -27,9 +30,13 @@ class SNPGalleryScreen extends StatelessWidget {
         children: <Widget>[
           Image.network(
               "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597684051750&di=1eef107195f850e761412fcd0c0eeb87&imgtype=0&src=http%3A%2F%2Fimg.mp.sohu.com%2Fupload%2F20170520%2Fdd98cafe695546638ea9b72d6cbb694e_th.png"),
-          Text(
-            '保时捷',
-            textAlign: TextAlign.center,
+          Container(
+            alignment: Alignment.center,
+            color: Colors.yellow,
+            child: Text(
+              '保时捷',
+              textAlign: TextAlign.center,
+            ),
           )
         ],
       ),

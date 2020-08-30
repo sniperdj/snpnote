@@ -16,8 +16,11 @@ class SNPHomeScreen extends StatelessWidget {
   }
 
   Widget homeData() {
-    return Column(
-      children: <Widget>[bannerWidget(), insistWidget()],
+    return Container(
+      color: Color.fromARGB(240, 240, 240, 240),
+      child: Column(
+        children: <Widget>[bannerWidget(), insistWidget()],
+      ),
     );
   }
 
@@ -60,7 +63,7 @@ class SNPHomeScreen extends StatelessWidget {
   // 列表
   Widget insistWidget() {
     return FutureBuilder(
-        future: SNPHomeViewModel.getInsistMockData(),
+        future: SNPHomeViewModel.getInsistData(),
         builder: (BuildContext ctx, AsyncSnapshot snapshot) {
           final List<SNPInsistModel> insistItems = snapshot.data;
           if (!snapshot.hasData) {
@@ -81,13 +84,16 @@ class SNPHomeScreen extends StatelessWidget {
                   itemCount: insistItems.length,
                   itemBuilder: (context, index) {
                     final SNPInsistModel insistItem = insistItems[index];
-                    return ListTile(
-                      title: Text('${insistItem.insistName}'),
-                      onTap: () {
-                        Navigator.of(context).pushNamed(
-                            SNPInsistDetailScreen.routeName,
-                            arguments: insistItem);
-                      },
+                    return Container(
+                      color: Colors.white,
+                      child: ListTile(
+                        title: Text('${insistItem.insistName}'),
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                              SNPInsistDetailScreen.routeName,
+                              arguments: insistItem);
+                        },
+                      ),
                     );
                   }),
             ),

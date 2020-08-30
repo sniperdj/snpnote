@@ -33,12 +33,32 @@ class SNPDiaryScreen extends StatelessWidget {
           }
 
           return Container(
+            color: Color.fromARGB(240, 240, 240, 240),
             child: ListView.builder(
                 itemCount: diaryItems.length,
                 itemBuilder: (ctx, index) {
                   SNPDiaryModel diary = diaryItems[index];
                   if (diary.diaryImgUrl == null) {
-                    return ListTile(
+                    return Container(
+                      color: Colors.white,
+                      child: ListTile(
+                        title: Text('${diary.diaryType}'),
+                        subtitle: Text('${diary.diaryContent}'),
+                        onTap: () {
+                          Navigator.of(ctx).pushNamed(
+                              SNPDiaryDetailScreen.routeName,
+                              arguments: diary);
+                        },
+                      ),
+                    );
+                  }
+                  return Container(
+                    color: Colors.white,
+                    child: ListTile(
+                      leading: Image.asset(
+                        diary.diaryImgUrl,
+                        fit: BoxFit.fill,
+                      ),
                       title: Text('${diary.diaryType}'),
                       subtitle: Text('${diary.diaryContent}'),
                       onTap: () {
@@ -46,20 +66,7 @@ class SNPDiaryScreen extends StatelessWidget {
                             SNPDiaryDetailScreen.routeName,
                             arguments: diary);
                       },
-                    );
-                  }
-                  return ListTile(
-                    leading: Image.asset(
-                      diary.diaryImgUrl,
-                      fit: BoxFit.fill,
                     ),
-                    title: Text('${diary.diaryType}'),
-                    subtitle: Text('${diary.diaryContent}'),
-                    onTap: () {
-                      Navigator.of(ctx).pushNamed(
-                          SNPDiaryDetailScreen.routeName,
-                          arguments: diary);
-                    },
                   );
                 }),
           );
