@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 class SNPInsistModel {
-  String id;
+  // String id;
   String insistName;
   String insistDays;
   String detailInfo;
@@ -10,8 +10,7 @@ class SNPInsistModel {
   String startDate;
 
   SNPInsistModel(
-      {this.id,
-      this.insistName,
+      {this.insistName,
       this.insistDays,
       this.detailInfo,
       this.insistUser,
@@ -20,7 +19,7 @@ class SNPInsistModel {
   String hyMealModelToJson(SNPInsistModel data) => json.encode(data.toJson());
 
   factory SNPInsistModel.fromJson(Map<String, dynamic> json) => SNPInsistModel(
-        id: json["id"],
+        // id: json["id"],
         insistName: json["insist_name"],
         insistDays: json["insist_days"],
         detailInfo: json["detail_info"],
@@ -28,7 +27,7 @@ class SNPInsistModel {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
+        // "id": id,
         "insist_name": insistName,
         "insist_days": insistDays,
         "detail_info": detailInfo,

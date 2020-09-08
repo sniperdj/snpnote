@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:snpnote/core/model/diary/snp_diary_model.dart';
 import 'package:snpnote/core/viewmodel/diary/snp_diary_view_model.dart';
 import 'package:snpnote/ui/pages/diary/snp_diary_detail.dart';
+import 'package:snpnote/ui/pages/diary/snp_diary_add.dart';
 
 class SNPDiaryScreen extends StatelessWidget {
   @override
@@ -9,6 +10,14 @@ class SNPDiaryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('成功日记'),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                print('add icon btn clicked');
+                Navigator.of(context).pushNamed(SNPDiaryAddScreen.routeName);
+              }),
+        ],
       ),
       body: diarySection(),
     );

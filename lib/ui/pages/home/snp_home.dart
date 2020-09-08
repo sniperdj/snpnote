@@ -3,16 +3,25 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:snpnote/core/model/home/snp_banner_model.dart';
 import 'package:snpnote/core/model/home/snp_insist_model.dart';
 import 'package:snpnote/core/viewmodel/home/snp_home_view_model.dart';
+import 'package:snpnote/ui/pages/home/snp_home_add.dart';
 import 'package:snpnote/ui/pages/home/snp_home_insist_detail.dart';
 
 class SNPHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('首页'),
-        ),
-        body: homeData());
+      appBar: AppBar(
+        title: Text('首页'),
+      ),
+      body: homeData(),
+      floatingActionButton: FloatingActionButton(
+          tooltip: "add",
+          child: Icon(Icons.add),
+          onPressed: () {
+            // print("floating action btn clicked");
+            Navigator.of(context).pushNamed(SNPHomeAddScreen.routeName);
+          }),
+    );
   }
 
   Widget homeData() {

@@ -4,20 +4,13 @@ import 'package:snpnote/core/model/home/snp_banner_model.dart';
 
 final List<SNPInsistModel> mockInsistLists = [
   SNPInsistModel(
-      id: "0",
       insistName: "我要戒酒",
       insistDays: "3",
       detailInfo: "从今天开始,少喝酒,少喝酒,少喝酒,不是完全不喝哈"),
   SNPInsistModel(
-      id: "1",
-      insistName: "我要减肥",
-      insistDays: "1",
-      detailInfo: "从今天开始,运动,运动,运动,注意饮食哈"),
+      insistName: "我要减肥", insistDays: "1", detailInfo: "从今天开始,运动,运动,运动,注意饮食哈"),
   SNPInsistModel(
-      id: "1",
-      insistName: "我要背英语单词",
-      insistDays: "5",
-      detailInfo: "从今天开始,积少成多,坚持哈"),
+      insistName: "我要背英语单词", insistDays: "5", detailInfo: "从今天开始,积少成多,坚持哈"),
 ];
 
 final List<SNPBannerModel> mockBannerList = [

@@ -25,4 +25,14 @@ class SNPHomeViewModel extends ChangeNotifier {
     }
     return Future.value(insistList);
   }
+
+  static postInsistData(SNPInsistModel insistData) async {
+    final insistURL = "/api/v1/home/add";
+    Map<String, dynamic> param = insistData.toJson();
+    final result =
+        await HttpRequest.request(insistURL, method: "POST", params: param);
+    final data = result["data"];
+
+    return Future.value(data);
+  }
 }
