@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+
+import 'package:dio/dio.dart';
+
 import 'package:snpnote/core/model/home/snp_banner_model.dart';
 import 'package:snpnote/core/model/home/snp_insist_model.dart';
 import 'package:snpnote/core/viewmodel/home/snp_home_view_model.dart';
 import 'package:snpnote/ui/pages/home/snp_home_add.dart';
 import 'package:snpnote/ui/pages/home/snp_home_insist_detail.dart';
+import 'package:snpnote/core/view/snp_sys_dialog.dart';
 
-class SNPHomeScreen extends StatelessWidget {
+class SNPHomeScreen extends StatefulWidget {
+  @override
+  _SNPHomeScreenState createState() => _SNPHomeScreenState();
+}
+
+class _SNPHomeScreenState extends State<SNPHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,12 +37,12 @@ class SNPHomeScreen extends StatelessWidget {
     return Container(
       color: Color.fromARGB(240, 240, 240, 240),
       child: Column(
-        children: <Widget>[bannerWidget(), insistWidget()],
+        // children: <Widget>[bannerWidget(), insistWidget()],
+        children: <Widget>[insistWidget()],
       ),
     );
   }
 
-  // 轮播图
   Widget bannerWidget() {
     return FutureBuilder(
         future: SNPHomeViewModel.getBannerMockData(),
@@ -69,7 +78,6 @@ class SNPHomeScreen extends StatelessWidget {
         });
   }
 
-  // 列表
   Widget insistWidget() {
     return FutureBuilder(
         future: SNPHomeViewModel.getInsistData(),
@@ -93,20 +101,40 @@ class SNPHomeScreen extends StatelessWidget {
                   itemCount: insistItems.length,
                   itemBuilder: (context, index) {
                     final SNPInsistModel insistItem = insistItems[index];
-                    return Container(
-                      color: Colors.white,
-                      child: ListTile(
-                        title: Text('${insistItem.insistName}'),
-                        onTap: () {
-                          Navigator.of(context).pushNamed(
-                              SNPInsistDetailScreen.routeName,
-                              arguments: insistItem);
-                        },
-                      ),
-                    );
+                    return myContainder(context, insistItem);
                   }),
             ),
           );
         });
+  }
+
+  Widget myContainder(BuildContext context, SNPInsistModel insistItem) {
+    return Container(
+      color: Colors.white,
+      child: ListTile(
+        title: Text('${insistItem.insistName}'),
+        onTap: () {
+          Navigator.of(context).pushNamed(SNPInsistDetailScreen.routeName,
+              arguments: insistItem);
+        },
+        onLongPress: () async {
+          final result =
+              await SNPSysDialog.showSelectDialog(context, "是否需要删除该计划?");
+          print("result is : ${result}");
+          if (result) {
+            final res = SNPHomeViewModel.delInsistData(insistItem);
+            res.then((data) {
+              print("data : ${data}");
+              setState(() {});
+            }).catchError((error) {
+              DioError err = error;
+              // String errCode = "${err.response.statusCode}";
+              String errMsg = err.error.toString();
+              SNPSysDialog.showMyDialog(context, errMsg);
+            });
+          }
+        },
+      ),
+    );
   }
 }

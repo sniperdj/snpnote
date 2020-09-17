@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:snpnote/core/model/home/snp_insist_model.dart';
 import 'package:snpnote/core/services/http_request.dart';
@@ -26,13 +27,32 @@ class SNPHomeViewModel extends ChangeNotifier {
     return Future.value(insistList);
   }
 
-  static postInsistData(SNPInsistModel insistData) async {
+  static addInsistData(SNPInsistModel insistData) async {
     final insistURL = "/api/v1/home/add";
     Map<String, dynamic> param = insistData.toJson();
     final result =
         await HttpRequest.request(insistURL, method: "POST", params: param);
-    final data = result["data"];
+    // final data = result["data"];
+    // if (data == null) {
+    //   var err = DioError();
+    //   return Future.error(err);
+    // }
+    return result;
+  }
 
-    return Future.value(data);
+  static updateInsistData(SNPInsistModel insistData) async {
+    final insistURL = "/api/v1/home/update";
+    Map<String, dynamic> param = insistData.toJson();
+    final result =
+        await HttpRequest.request(insistURL, method: "POST", params: param);
+    return result;
+  }
+
+  static delInsistData(SNPInsistModel insistData) async {
+    final insistURL = "/api/v1/home/delete";
+    Map<String, dynamic> param = insistData.toJson();
+    final result =
+        await HttpRequest.request(insistURL, method: "POST", params: param);
+    return result;
   }
 }

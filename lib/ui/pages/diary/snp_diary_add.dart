@@ -13,6 +13,7 @@ class SNPDiaryAddScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[titleSection(), contentSection(), okBtnSection()],
       ),
+      resizeToAvoidBottomPadding: false,
     );
   }
 
